@@ -1,0 +1,28 @@
+﻿<Window x:Class="_01_Processes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_01_Processes"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=local:MainWindow}"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <Button Click="Button_Click_Refresh">Refresh</Button>
+            <ComboBox Width="50" x:Name="ComboBoxRefreshTime" SelectionChanged="ComboBox_SelectionChanged"></ComboBox>
+            <Button x:Name="ButtonClose" Click="ButtonClose_Click">Close process</Button>
+            <Button x:Name="ButtonFullInfo" Click="ButtonFullInfo_Click">Full info</Button>
+            <Button Name="btnOpenFile" Click="btnOpenFile_Click">Start new process</Button>
+        </ToolBar>
+        <DataGrid Name="grid" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="grid_SelectionChanged" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Process Name" Binding="{Binding ProcessName}" />
+                <DataGridTextColumn Header="PID" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Total Processor Time" Binding="{Binding TotalProcessorTime}" />
+                <DataGridTextColumn Header="Priority" Binding="{Binding PriorityClass}" />
+                <DataGridTextColumn Header="User Name" Binding="{Binding UserName}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>

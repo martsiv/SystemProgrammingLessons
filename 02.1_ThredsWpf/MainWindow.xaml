@@ -6,7 +6,59 @@
         xmlns:local="clr-namespace:_02._1_ThredsWpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <TabControl>
 
-    </Grid>
+
+        <TabItem Header="Tasks 1-3, 6">
+            <StackPanel>
+                <Border BorderThickness="2" BorderBrush="CadetBlue">
+                    <DockPanel>
+                        <TextBlock Padding="5, 0" DockPanel.Dock="Left" Text="Left range: "/>
+                        <TextBox Padding="5, 0" DockPanel.Dock="Left" Width="50"></TextBox>
+                        <TextBlock Padding="5, 0" DockPanel.Dock="Left" Text="Right range: "/>
+                        <TextBox Padding="5, 0" DockPanel.Dock="Left" Width="50"></TextBox>
+                        <TextBlock Padding="5, 0" DockPanel.Dock="Left" Text="Number of threads: "/>
+                        <TextBox Padding="5, 0" DockPanel.Dock="Left" HorizontalAlignment="Left" Width="50"></TextBox>
+                        <Button Padding="5, 0" DockPanel.Dock="Left" HorizontalAlignment="Left" Width="70">Generate</Button>
+                    </DockPanel>
+                </Border>
+                <ScrollViewer x:Name="ScrollViewewNumbers1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+                    <DataGrid></DataGrid>
+                </ScrollViewer>
+            </StackPanel>
+        </TabItem>
+
+
+        <TabItem Header="Tasks 4-5, 7">
+            <StackPanel>
+                <Border BorderThickness="2" BorderBrush="CadetBlue">
+                    <DockPanel>
+                        <TextBlock  Padding="5, 0" DockPanel.Dock="Left" Text="This button generate 10000numbers, calculate min, max, average and write to file result "/>
+                        <Button Padding="5, 0" HorizontalAlignment="Center" Width="70">Generate</Button>
+                    </DockPanel>
+                </Border>
+                <ScrollViewer x:Name="ScrollViewewNumbers2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+                    <DataGrid></DataGrid>
+                </ScrollViewer>
+                <Border BorderThickness="1" BorderBrush="Black" Margin="2" Padding="5">
+                    <UniformGrid>
+                        <TextBlock Padding="5, 0" Text="Min: "/>
+                        <TextBox Padding="5, 0" HorizontalAlignment="Stretch" ></TextBox>
+                    </UniformGrid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="Black" Margin="2" Padding="5">
+                    <UniformGrid>
+                        <TextBlock Padding="5, 0" Text="Max: "/>
+                        <TextBox Padding="5, 0" HorizontalAlignment="Stretch"></TextBox>
+                    </UniformGrid>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="Black" Margin="2" Padding="5">
+                    <UniformGrid>
+                        <TextBlock Padding="5, 0" Text="Average: "/>
+                        <TextBox Padding="5, 0" HorizontalAlignment="Stretch"></TextBox>
+                    </UniformGrid>
+                </Border>
+            </StackPanel>
+        </TabItem>
+    </TabControl>
 </Window>

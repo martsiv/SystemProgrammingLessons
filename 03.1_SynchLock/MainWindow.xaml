@@ -1,0 +1,29 @@
+﻿<Window x:Class="_03._1_SynchLock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_03._1_SynchLock"
+        d:DataContext="{d:DesignInstance Type=local:MainWindow}"
+
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <UniformGrid>
+            <TextBlock Padding="0, 5">Choose folder to calculate</TextBlock>
+            <Button x:Name="ButtonCalculate" Click="ButtonCalculate_Click">Choose</Button>
+        </UniformGrid>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Number of words: "></TextBlock>
+            <TextBlock x:Name="WordsTextBlock" ></TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Number of rows: "></TextBlock>
+            <TextBlock x:Name="RowsTextBlock"></TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Number of symbols: "></TextBlock>
+            <TextBlock x:Name="SymbolsTextBlock"></TextBlock>
+        </StackPanel>
+    </StackPanel>
+</Window>

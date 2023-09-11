@@ -35,7 +35,6 @@ namespace _01_Processes
         ProcessInfo? SelectedProcess { get; set; } = null;
         public MainWindow()
         {
-
             RefreshTime = new() { "Manual", "1s", "2s", "5s" };
             InitializeComponent();
             ComboBoxRefreshTime.ItemsSource = RefreshTime;

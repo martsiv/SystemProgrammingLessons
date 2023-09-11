@@ -14,12 +14,12 @@
                 <Border BorderThickness="2" BorderBrush="CadetBlue">
                     <DockPanel>
                         <TextBlock Padding="5, 0" DockPanel.Dock="Left" Text="Left range: "/>
-                        <TextBox Padding="5, 0" DockPanel.Dock="Left" Width="50"></TextBox>
+                        <TextBox x:Name="TextBoxLeftRange" Padding="5, 0" DockPanel.Dock="Left" Width="50"></TextBox>
                         <TextBlock Padding="5, 0" DockPanel.Dock="Left" Text="Right range: "/>
-                        <TextBox Padding="5, 0" DockPanel.Dock="Left" Width="50"></TextBox>
+                        <TextBox x:Name="TextBoxRightRange" Padding="5, 0" DockPanel.Dock="Left" Width="50"></TextBox>
                         <TextBlock Padding="5, 0" DockPanel.Dock="Left" Text="Number of threads: "/>
-                        <TextBox Padding="5, 0" DockPanel.Dock="Left" HorizontalAlignment="Left" Width="50"></TextBox>
-                        <Button Padding="5, 0" DockPanel.Dock="Left" HorizontalAlignment="Left" Width="70">Generate</Button>
+                        <TextBox x:Name="TextBoxThreads" Padding="5, 0" DockPanel.Dock="Left" HorizontalAlignment="Left" Width="50"></TextBox>
+                        <Button x:Name="ButtonGenerateRange" IsEnabled="False" Padding="5, 0" DockPanel.Dock="Left" HorizontalAlignment="Left" Width="70" Click="ButtonGenerateRange_Click">Generate</Button>
                     </DockPanel>
                 </Border>
                 <ScrollViewer x:Name="ScrollViewewNumbers1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
@@ -34,7 +34,7 @@
                 <Border BorderThickness="2" BorderBrush="CadetBlue">
                     <DockPanel>
                         <TextBlock  Padding="5, 0" DockPanel.Dock="Left" Text="This button generate 10000numbers, calculate min, max, average and write to file result "/>
-                        <Button Padding="5, 0" HorizontalAlignment="Center" Width="70">Generate</Button>
+                        <Button x:Name="Button10000Numbers" Padding="5, 0" HorizontalAlignment="Center" Width="70" Click="Button10000Numbers_Click">Generate</Button>
                     </DockPanel>
                 </Border>
                 <ScrollViewer x:Name="ScrollViewewNumbers2" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">

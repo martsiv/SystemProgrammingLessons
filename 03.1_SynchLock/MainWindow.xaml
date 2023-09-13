@@ -14,16 +14,16 @@
             <Button x:Name="ButtonCalculate" Click="ButtonCalculate_Click">Choose</Button>
         </UniformGrid>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Number of words: "></TextBlock>
-            <TextBlock x:Name="WordsTextBlock" ></TextBlock>
+            <TextBlock MinWidth="100" Text="Number of words: "></TextBlock>
+            <TextBlock MinWidth="100" x:Name="WordsTextBlock" Text="{Binding Stata.Words_str}"></TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Number of rows: "></TextBlock>
-            <TextBlock x:Name="RowsTextBlock"></TextBlock>
+            <TextBlock MinWidth="100" Text="Number of rows: "></TextBlock>
+            <TextBlock MinWidth="100" x:Name="RowsTextBlock" Text="{Binding Stata.Lines}"> </TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Number of symbols: "></TextBlock>
-            <TextBlock x:Name="SymbolsTextBlock"></TextBlock>
+            <TextBlock MinWidth="100" x:Name="SymbolsTextBlock" Text="{Binding Stata.Punctuation}"></TextBlock>
         </StackPanel>
     </StackPanel>
 </Window>

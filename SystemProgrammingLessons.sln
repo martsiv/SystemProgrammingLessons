@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02_Threds", "02_Threds\02_T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02.1_ThredsWpf", "02.1_ThredsWpf\02.1_ThredsWpf.csproj", "{3E9362AB-DC4C-4239-8525-83DA8BFFF498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_ThreadPool", "03_ThreadPool\03_ThreadPool.csproj", "{93A4268F-F075-4209-A559-6CFEAEC21A84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03_ThreadPool", "03_ThreadPool\03_ThreadPool.csproj", "{93A4268F-F075-4209-A559-6CFEAEC21A84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03.1_SynchLock", "03.1_SynchLock\03.1_SynchLock.csproj", "{F84C0440-5E94-44F5-9BEE-21E7B8E87E7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03.1_SynchLock", "03.1_SynchLock\03.1_SynchLock.csproj", "{F84C0440-5E94-44F5-9BEE-21E7B8E87E7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.1_Semaphore", "04.1_Semaphore\04.1_Semaphore.csproj", "{269DCAAF-CD10-438A-8CB2-905321E78184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04.2_EventHanfler", "04.2_EventHanfler\04.2_EventHanfler.csproj", "{2A8E444A-A845-4402-9E92-8188FBD9C23E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{F84C0440-5E94-44F5-9BEE-21E7B8E87E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F84C0440-5E94-44F5-9BEE-21E7B8E87E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F84C0440-5E94-44F5-9BEE-21E7B8E87E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{269DCAAF-CD10-438A-8CB2-905321E78184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{269DCAAF-CD10-438A-8CB2-905321E78184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{269DCAAF-CD10-438A-8CB2-905321E78184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{269DCAAF-CD10-438A-8CB2-905321E78184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A8E444A-A845-4402-9E92-8188FBD9C23E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A8E444A-A845-4402-9E92-8188FBD9C23E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A8E444A-A845-4402-9E92-8188FBD9C23E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A8E444A-A845-4402-9E92-8188FBD9C23E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

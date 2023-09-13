@@ -39,11 +39,8 @@ namespace _03._1_SynchLock
         public MainWindow()
         {
             InitializeComponent();
-            Binding binding = new Binding();
+            this.DataContext = this;
 
-            binding.ElementName = "Stata"; 
-            binding.Path = new PropertyPath("Words");
-            WordsTextBlock.SetBinding(TextBlock.TextProperty, binding);
         }
         private void ButtonCalculate_Click(object sender, RoutedEventArgs e)
         {
@@ -52,27 +49,17 @@ namespace _03._1_SynchLock
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     FolderPath = dialog.SelectedPath;
-                    string[] files = Directory.GetFiles(FolderPath, "*.txt");
+                    string[] files = Directory.GetFiles(FolderPath, "*.txt", SearchOption.AllDirectories);
 
                     foreach (var file in files)
                     {
-                        //FileStream fs = new FileStream(file, FileMode.Open);
-                        //fs.Read
-
-                        //StreamReader sr = new StreamReader(file);
-                        //sr.ReadToEnd();
-
                         string text = File.ReadAllText(file);
-                        TextAnalyseWords(text);
-                        TextAnalyseRows(text);
-                        TextAnalyseLetters(text);
-                        //Thread thread = new Thread(TextAnalyseWords);
-                        //thread.Start(text);
-                        //Thread thread1 = new Thread(TextAnalyseRows);
-                        //thread1.Start(text);
-                        //Thread thread3 = new Thread(TextAnalyseLetters);
-                        //thread3.Start(text);
-                        //Task.Run(() => TextAnalyse(text, statistic));
+                        Thread thread = new Thread(TextAnalyseWords);
+                        thread.Start(text);
+                        Thread thread1 = new Thread(TextAnalyseRows);
+                        thread1.Start(text);
+                        Thread thread3 = new Thread(TextAnalyseLetters);
+                        thread3.Start(text);
                     }
                 }
             }
@@ -85,18 +72,9 @@ namespace _03._1_SynchLock
                 {
                     string[] wordArray = text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     this.stat.Words += wordArray.Length;
-                    Application.Current.Dispatcher.Invoke(new Action(() =>
-                    {
-                        Binding binding = new Binding("Stata");
-
-                        //binding.ElementName = "Stata";
-                        binding.Path = new PropertyPath("Words");
-                        WordsTextBlock.SetBinding(TextBlock.TextProperty, binding);
-                    }));
-                    
+                    Thread.Sleep(100);
                 }
             }
-
         }
         private void TextAnalyseRows(object stat)
         {
@@ -106,14 +84,7 @@ namespace _03._1_SynchLock
                 {
                     string[] rowArray = text.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
                     this.stat.Lines += rowArray.Length;
-                    Application.Current.Dispatcher.Invoke(new Action(() =>
-                    {
-                        Binding binding = new Binding();
-
-                        binding.ElementName = "Stata";
-                        binding.Path = new PropertyPath("Lines");
-                        RowsTextBlock.SetBinding(TextBlock.TextProperty, binding);
-                    }));
+                    Thread.Sleep(100);
                 }
             }
         }
@@ -132,20 +103,14 @@ namespace _03._1_SynchLock
                         if (separatorArray.Contains(c))
                         {
                             this.stat.Punctuation++;
-                            Application.Current.Dispatcher.Invoke(new Action(() =>
-                            {
-                                Binding binding = new Binding();
-
-                                binding.ElementName = "Stata";
-                                binding.Path = new PropertyPath("Punctuation");
-                                SymbolsTextBlock.SetBinding(TextBlock.TextProperty, binding);
-                            }));
+                            Thread.Sleep(100);
                         }
                     }
                 }
             }
         }
     }
+    [AddINotifyPropertyChangedInterface]
     public class Stat
     {
         public int Words { get; set; }
@@ -157,6 +122,7 @@ namespace _03._1_SynchLock
             Lines = 0;
             Punctuation = 0;
         }
+        public string Words_str { get => Words.ToString(); }
     }
 
 }

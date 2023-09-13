@@ -1,7 +1,7 @@
 ﻿using static System.Net.Mime.MediaTypeNames;
 using System.IO;
 
-namespace _04._2_EventHanfler
+namespace _04._2_EventHandler
 {
     internal class Program
     {

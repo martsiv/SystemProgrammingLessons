@@ -5,7 +5,7 @@ namespace _04._2_EventHanfler
 {
     internal class Program
     {
-        static AutoResetEvent waitHandler = new AutoResetEvent(true);
+        static ManualResetEvent waitHandler = new ManualResetEvent(true);
 
         static void Main(string[] args)
         {
@@ -13,6 +13,7 @@ namespace _04._2_EventHanfler
             Thread myThreadSaveNumbers = new(myClass.SaveNumbers);
             myThreadSaveNumbers.Name = $"Thread save pairs";
             myThreadSaveNumbers.Start(waitHandler);
+            myThreadSaveNumbers.Join();
 
             Thread myThreadSaveSumm = new(myClass.SaveSumm);
             myThreadSaveSumm.Name = $"Thread save summ";
@@ -21,10 +22,6 @@ namespace _04._2_EventHanfler
             Thread myThreadSaveMult = new(myClass.SaveMult);
             myThreadSaveMult.Name = $"Thread save mult";
             myThreadSaveMult.Start(waitHandler);
-
-            //myClass.SaveNumbers(new Object());
-            //myClass.SaveSumm(new Object());
-            //myClass.SaveMult(new Object());
         }
     }
     public class MyClass
@@ -36,37 +33,31 @@ namespace _04._2_EventHanfler
         private Random _random = new Random();
         public void SaveNumbers(object obj)
         {
-            Thread.Sleep(5000);
             EventWaitHandle ev = obj as EventWaitHandle;
-            if (ev.WaitOne()) // wait
-            {
-                Console.WriteLine($"{Thread.CurrentThread.Name}");
+            Thread.Sleep(5000);
+            ev.Reset();
+            Console.WriteLine($"{Thread.CurrentThread.Name}");
 
-                Console.WriteLine("Started generating numbers");
-                string text = "";
-                for (int i = 0; i < 5; i++)
-                {
-                    for (int j = 0; j < 2; j++)
-                    {
-                        int tmp = _random.Next(0, 99);
-                        Console.Write(tmp + " ");
-                        text += tmp;
-                        text += " ";
-                    }
-                    Console.WriteLine();
-                    text += "\n";
-                }
-                using (StreamWriter writer = new StreamWriter(Path.Combine(projectDirectory, _filenameNumbers), false))
-                {
-                    writer.WriteLine(text);
-                }
-                Console.WriteLine("Pairs saved!");
-                ev.Set();
-            }
-            else
+            Console.WriteLine("Started generating numbers");
+            string text = "";
+            for (int i = 0; i < 5; i++)
             {
-                Console.WriteLine("Thread {0} late", Thread.CurrentThread.ManagedThreadId);
+                for (int j = 0; j < 2; j++)
+                {
+                    int tmp = _random.Next(0, 99);
+                    Console.Write(tmp + " ");
+                    text += tmp;
+                    text += " ";
+                }
+                Console.WriteLine();
+                text += "\n";
             }
+            using (StreamWriter writer = new StreamWriter(Path.Combine(projectDirectory, _filenameNumbers), false))
+            {
+                writer.WriteLine(text);
+            }
+            Console.WriteLine("Pairs saved!");
+            ev.Set();
         }
         public void SaveSumm(object obj)
         {
@@ -88,13 +79,13 @@ namespace _04._2_EventHanfler
                     int tmp = numbers[i] + numbers[i + 1];
                     Console.Write(tmp + " ");
                     newText += tmp + " ";
+                    Console.WriteLine();
                 }
                 using (StreamWriter writer = new StreamWriter(Path.Combine(projectDirectory, _filenameSumm), false))
                 {
                     writer.WriteLine(newText);
                 }
                 Console.WriteLine("Summ saved!");
-                ev.Set();
             }
             else
             {
@@ -127,7 +118,6 @@ namespace _04._2_EventHanfler
                     writer.WriteLine(newText);
                 }
                 Console.WriteLine("Mult saved!");
-                ev.Set();
             }
             else
             {
